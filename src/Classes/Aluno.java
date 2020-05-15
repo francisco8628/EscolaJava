@@ -6,13 +6,35 @@ public class Aluno {
 
       private int idade;
 
-      private String Materia;
+      private String Materia1;
+      private String Materia2;
+      private String Materia3;
       
       private double nota1;      
       private double nota2;      
       private double nota3;
       
       
+
+	public String getMateria2() {
+		return Materia2;
+	}
+
+	public void setMateria2(String materia2) {
+		Materia2 = materia2;
+	}
+
+	public String getMateria3() {
+		return Materia3;
+	}
+
+	public void setMateria3(String materia3) {
+		Materia3 = materia3;
+	}
+
+	public void setMateria1(String materia1) {
+		Materia1 = materia1;
+	}
 
 	public double getNota1() {
 		return nota1;
@@ -54,12 +76,12 @@ public class Aluno {
 		this.idade = idade;
 	}
 
-	public String getMateria() {
-		return Materia;
+	public String getMateria1() {
+		return Materia1;
 	}
 
 	public void setMateria(String materia) {
-		Materia = materia;
+		Materia1 = materia;
 	}
 
 	 
@@ -68,4 +90,26 @@ public class Aluno {
 		return (nota1+nota2+nota3)/3;
 	}
       
+	public boolean getAprovado() {
+		
+		double media = getMediaNota();
+		
+		if(media>=70) {
+			
+			return true;
+			
+		}
+		else {
+			return false;
+		}
+		
+		
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", idade=" + idade + ", Materia1=" + Materia1 + ", Materia2=" + Materia2
+				+ ", Materia3=" + Materia3 + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3=" + nota3 + "]";
+	}
 }
