@@ -1,9 +1,14 @@
 package executavel;
 
+
+
 import javax.swing.JOptionPane;
 
+
+
 import Classes.Aluno;
-import sun.tools.asm.Cover;
+import Classes.Materia;
+
 
 public class ClasseExecutavel {
 
@@ -11,34 +16,48 @@ public class ClasseExecutavel {
 		
 		Aluno aluno = new Aluno();
 		
+		String numMateria=JOptionPane.showInputDialog("Quantas materias tem o aluno ?");
 		
+		for (int i = 0;  i<=Integer.parseInt(numMateria)-1; i++) {
+			
+			Materia materia = new Materia();
+			
+			String mate=JOptionPane.showInputDialog("Digite  a materia "+(i+1));
+			materia.setMateria(mate);
+			
+			String nota=JOptionPane.showInputDialog("Digite  a nota"+(i+1));
+			materia.setNota(Double.parseDouble(nota));
+			
+			aluno.getMaterias().add(materia);
+		}
 		
+		int remove = JOptionPane.showConfirmDialog(null, "deseja remover alguma materia");
 		
-		String materia1 = JOptionPane.showInputDialog("Digite a Materia 1 : "); 
-		aluno.getMateria().setMateria1(materia1);
-		String nota1 = JOptionPane.showInputDialog("Digite a nota 1 : ");
-		aluno.getMateria().setNota1(Double.parseDouble(nota1));
+		if (remove==0) {
+			
+			String escolha=JOptionPane.showInputDialog("Digite de 1 a "+numMateria);
+			if(Integer.parseInt(escolha)-1<aluno.getMaterias().size()) {
+			
+			aluno.getMaterias().remove(Integer.parseInt(escolha)-1);
+			}
+			else {
+				
+				System.out.println("valor não encontrado");
+			}
+		}
 		
-		String materia2 = JOptionPane.showInputDialog("Digite a Materia 2: "); 
-		aluno.getMateria().setMateria2(materia2);
-		String nota2 = JOptionPane.showInputDialog("Digite a nota 2 : ");
-		aluno.getMateria().setNota2(Double.parseDouble(nota2));
+		for (int i = 0;i<aluno.getMaterias().size();i++) {
+			
+			System.out.println("A materia: "+aluno.getMaterias().get(i).getMateria());
+			System.out.println("tem nota: "+aluno.getMaterias().get(i).getNota());
+			System.out.println("-----------------------------------------------------------------");
+		}
 		
-		String materia3 = JOptionPane.showInputDialog("Digite a Materia 3 : "); 
-		aluno.getMateria().setMateria3(materia3);
-		String nota3 = JOptionPane.showInputDialog("Digite a nota 3 : ");
-		aluno.getMateria().setNota3(Double.parseDouble(nota3));
+		System.out.println("A media das notas é : "+aluno.getMediaNota());
+		System.out.println("O aluno Está :" +(aluno.getAprovado()? " Aprovado":"Reprovado"));
 		
-		
-		aluno.setNome("francisco");
-		System.out.println(aluno.getNome());
-		
-		System.out.println("A materia : " +aluno.getMateria().getMateria1()+ ", tem nota : "+aluno.getMateria().getNota1());
-		System.out.println("A materia : " +aluno.getMateria().getMateria2()+ ", tem nota : "+aluno.getMateria().getNota2());
-		System.out.println("A materia : " +aluno.getMateria().getMateria3()+ ", tem nota : "+aluno.getMateria().getNota3());
-		
-		System.out.println("A media do aluno é : "+aluno.getMediaNota());
-		System.out.println(aluno.getAprovado()?"Aluno aprovado":"Aluno reprovado");
 	}
 
 }
+
+

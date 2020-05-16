@@ -1,21 +1,26 @@
 package Classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
 	
 	  private String nome;
 
       private int idade;  
       
-      private Materia materia = new Materia();
+      private List<Materia>materias = new ArrayList<Materia>();
       
-   
+    
 
-	public Materia getMateria() {
-		return materia;
+	
+
+	public List<Materia> getMaterias() {
+		return materias;
 	}
 
-	public void setMateria(Materia materia) {
-		this.materia = materia;
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
 	}
 
 	public String getNome() {
@@ -38,8 +43,15 @@ public class Aluno {
 
 	 
 	public double getMediaNota() {
+		double media = 0;
+	
+		for (Materia materia : materias) {
 		
-		return (materia.getNota1()+materia.getNota2()+materia.getNota3())/3;
+			media+= materia.getNota();
+		}
+		
+		
+		return media / materias.size();
 	}
       
 	public boolean getAprovado() {
@@ -58,6 +70,6 @@ public class Aluno {
 		
 		
 	}
-
-	
 }
+	
+
