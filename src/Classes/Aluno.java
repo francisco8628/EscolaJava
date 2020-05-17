@@ -3,13 +3,15 @@ package Classes;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Aluno {
 	
-	  private String nome;
+	  private String nome;    //nome do aluno
 
-      private int idade;  
+      private int idade;      //idade do aluno
       
-      private List<Materia>materias = new ArrayList<Materia>();
+      private List<Materia>materias = new ArrayList<Materia>();  //uma lista do objeto materia
       
     
 
@@ -43,16 +45,19 @@ public class Aluno {
 
 	 
 	public double getMediaNota() {
-		double media = 0;
+		double mediaTotal = 0;
 	
 		for (Materia materia : materias) {
-		
-			media+= materia.getNota();
+
+			mediaTotal += materia.getMediaMateria();
+
+		}
+         //return somaNotas / 4;4
+		return mediaTotal/ materias.size();//retorna o tamannho do objeto
+			
 		}
 		
-		
-		return media / materias.size();
-	}
+	
       
 	public boolean getAprovado() {
 		

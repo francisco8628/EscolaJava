@@ -15,6 +15,7 @@ public class ClasseExecutavel {
 	public static void main(String[] args) {
 		
 		Aluno aluno = new Aluno();
+		//double notas[] = new double[4];
 		
 		String numMateria=JOptionPane.showInputDialog("Quantas materias tem o aluno ?");
 		
@@ -25,9 +26,16 @@ public class ClasseExecutavel {
 			String mate=JOptionPane.showInputDialog("Digite  a materia "+(i+1));
 			materia.setMateria(mate);
 			
-			String nota=JOptionPane.showInputDialog("Digite  a nota"+(i+1));
-			materia.setNota(Double.parseDouble(nota));
+			double notas[] = new double[2];
+			for(int x =0;x<2;x++) {
+		   	
+			String nota=JOptionPane.showInputDialog("Digite  a nota"+(x+1));
+			notas [x] = Double.parseDouble(nota);
 			
+			
+			
+			}
+			materia.setNota(notas);
 			aluno.getMaterias().add(materia);
 		}
 		
@@ -46,10 +54,17 @@ public class ClasseExecutavel {
 			}
 		}
 		
-		for (int i = 0;i<aluno.getMaterias().size();i++) {
+		for (Materia m : aluno.getMaterias()) {
 			
-			System.out.println("A materia: "+aluno.getMaterias().get(i).getMateria());
-			System.out.println("tem nota: "+aluno.getMaterias().get(i).getNota());
+			//Materia materia = new Materia();
+			
+			System.out.println("A materia: "+m.getMateria());
+			System.out.println("tem notas: ");
+			
+			for(int a = 0;a<2;a++) {
+				
+				System.out.println(m.getNota()[a]);
+			}
 			System.out.println("-----------------------------------------------------------------");
 		}
 		
